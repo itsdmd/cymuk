@@ -2,7 +2,6 @@
 
 import pyautogui as pag
 from pynput import keyboard as kb
-import configparser
 import json
 
 alphanumerics = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p',
