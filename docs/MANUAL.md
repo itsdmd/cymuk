@@ -63,4 +63,6 @@ I highly recommend you to do an initial run of the program to generate a config 
 
 **`key_scroll_up`**: Emulate scrolling up.
 
+**`step_multiplier`**: Multiplier for step movements.
+
 **`scroll_multiplier`**: Multiplier for scrolling actions.

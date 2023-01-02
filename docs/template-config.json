@@ -47,5 +47,6 @@
 	"key_toggle_hold_middle": "ctrl+shift+none",
 	"key_scroll_up": "page_up",
 	"key_scroll_down": "page_down",
+	"step_multiplier": 10,
 	"scroll_multiplier": 5
 }
