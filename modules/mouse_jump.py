@@ -4,7 +4,7 @@ from pyautogui import moveTo
 
 
 def isValidBoundary(topLeft: tuple[int, int], bottomRight: tuple[int, int]):
-    print("\nValidating boundary (", str(topLeft), str(bottomRight), ")")
+    # print("\nValidating boundary (", str(topLeft), str(bottomRight), ")")
     if (topLeft[0] >= bottomRight[0] + 2) or (topLeft[1] >= bottomRight[1] + 2):
         print("\nInvalid boundary!")
         return False
