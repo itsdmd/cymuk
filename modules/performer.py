@@ -10,6 +10,8 @@ def fn_parser(name):
         key_quit()
     elif name == 'key_centralize':
         key_centralize()
+    elif name == 'key_centralize_root':
+        key_centralize_root()
     elif name == 'key_next_screen':
         key_next_screen()
     elif name == 'key_previous_screen':
@@ -95,6 +97,13 @@ def key_centralize():
     mj.jumpToCenter(kl.current_boundary[0], kl.current_boundary[1])
 
 
+def key_centralize_root():
+    print("\ncentralize root")
+    kl.set_current_boundary(kl.screens[kl.current_screen_index][0],
+                            kl.screens[kl.current_screen_index][1])
+    mj.jumpToCenter(kl.current_boundary[0], kl.current_boundary[1])
+
+
 def key_next_screen():
     print("\nnext screen")
     new_index = kl.current_screen_index + 1
@@ -115,32 +124,32 @@ def key_previous_screen():
 
 def key_jump_left():
     print("\njump left")
-    new_boundary = mj.cut_boundary_left(
-        kl.current_boundary[0], kl.current_boundary[1])
+    new_boundary = mj.cut_boundary_left(kl.current_boundary[0],
+                                        kl.current_boundary[1])
     kl.set_current_boundary(new_boundary[0], new_boundary[1])
     mj.jumpToCenter(kl.current_boundary[0], kl.current_boundary[1])
 
 
 def key_jump_right():
     print("\njump right")
-    new_boundary = mj.cut_boundary_right(
-        kl.current_boundary[0], kl.current_boundary[1])
+    new_boundary = mj.cut_boundary_right(kl.current_boundary[0],
+                                         kl.current_boundary[1])
     kl.set_current_boundary(new_boundary[0], new_boundary[1])
     mj.jumpToCenter(kl.current_boundary[0], kl.current_boundary[1])
 
 
 def key_jump_up():
     print("\njump up")
-    new_boundary = mj.cut_boundary_up(
-        kl.current_boundary[0], kl.current_boundary[1])
+    new_boundary = mj.cut_boundary_up(kl.current_boundary[0],
+                                      kl.current_boundary[1])
     kl.set_current_boundary(new_boundary[0], new_boundary[1])
     mj.jumpToCenter(kl.current_boundary[0], kl.current_boundary[1])
 
 
 def key_jump_down():
     print("\njump down")
-    new_boundary = mj.cut_boundary_down(
-        kl.current_boundary[0], kl.current_boundary[1])
+    new_boundary = mj.cut_boundary_down(kl.current_boundary[0],
+                                        kl.current_boundary[1])
     kl.set_current_boundary(new_boundary[0], new_boundary[1])
     mj.jumpToCenter(kl.current_boundary[0], kl.current_boundary[1])
 
