@@ -1,8 +1,8 @@
-# Perform action upon pressing key combination defined in the config file
+# Perform Action Upon Pressing Key Sequence Defined In the Config File
 
 import modules.keyboard_listener as kl
 import modules.mouse_jump as mj
-import pyautogui as pag
+from pyautogui import click, moveRel, mouseDown, mouseUp, scroll
 
 
 def fn_parser(name):
@@ -52,7 +52,6 @@ def fn_parser(name):
 
 def execute_key_combination():
     # print(kl.current_key_combination)
-
     current_key_combination_str = ""
     for key in kl.current_key_combination:
         current_key_combination_str += str(key).replace("Key.", "").lower()
@@ -73,27 +72,27 @@ def key_quit():
 
 def key_left():
     print("\nleft")
-    pag.moveRel(-10, 0)
+    moveRel(-10, 0)
 
 
 def key_right():
     print("\nright")
-    pag.moveRel(10, 0)
+    moveRel(10, 0)
 
 
 def key_up():
     print("\nup")
-    pag.moveRel(0, -10)
+    moveRel(0, -10)
 
 
 def key_down():
     print("\ndown")
-    pag.moveRel(0, 10)
+    moveRel(0, 10)
 
 
 def key_centralize():
     print("\ncentralize")
-    mj.jumpToCenter(kl.current_box[0], kl.current_box[1])
+    mj.jumpToCenter(kl.current_boundary[0], kl.current_boundary[1])
 
 
 def key_next_screen():
@@ -116,91 +115,89 @@ def key_previous_screen():
 
 def key_jump_left():
     print("\njump left")
-    new_box = mj.cut_box_left(kl.current_box[0], kl.current_box[1])
-    kl.set_current_box(new_box[0], new_box[1])
-    mj.jumpToCenter(kl.current_box[0], kl.current_box[1])
+    new_boundary = mj.cut_boundary_left(
+        kl.current_boundary[0], kl.current_boundary[1])
+    kl.set_current_boundary(new_boundary[0], new_boundary[1])
+    mj.jumpToCenter(kl.current_boundary[0], kl.current_boundary[1])
 
 
 def key_jump_right():
     print("\njump right")
-    new_box = mj.cut_box_right(kl.current_box[0], kl.current_box[1])
-    kl.set_current_box(new_box[0], new_box[1])
-    mj.jumpToCenter(kl.current_box[0], kl.current_box[1])
+    new_boundary = mj.cut_boundary_right(
+        kl.current_boundary[0], kl.current_boundary[1])
+    kl.set_current_boundary(new_boundary[0], new_boundary[1])
+    mj.jumpToCenter(kl.current_boundary[0], kl.current_boundary[1])
 
 
 def key_jump_up():
     print("\njump up")
-    new_box = mj.cut_box_up(kl.current_box[0], kl.current_box[1])
-    kl.set_current_box(new_box[0], new_box[1])
-    mj.jumpToCenter(kl.current_box[0], kl.current_box[1])
+    new_boundary = mj.cut_boundary_up(
+        kl.current_boundary[0], kl.current_boundary[1])
+    kl.set_current_boundary(new_boundary[0], new_boundary[1])
+    mj.jumpToCenter(kl.current_boundary[0], kl.current_boundary[1])
 
 
 def key_jump_down():
     print("\njump down")
-    new_box = mj.cut_box_down(kl.current_box[0], kl.current_box[1])
-    kl.set_current_box(new_box[0], new_box[1])
-    mj.jumpToCenter(kl.current_box[0], kl.current_box[1])
+    new_boundary = mj.cut_boundary_down(
+        kl.current_boundary[0], kl.current_boundary[1])
+    kl.set_current_boundary(new_boundary[0], new_boundary[1])
+    mj.jumpToCenter(kl.current_boundary[0], kl.current_boundary[1])
 
 
 def key_click_left():
     print("\nclick left")
-    pag.click(button='left')
+    click(button='left')
 
 
 def key_click_right():
     print("\nclick right")
-    pag.click(button='right')
+    click(button='right')
 
 
 def key_click_middle():
     print("\nclick middle")
-    pag.click(button='middle')
+    click(button='middle')
 
 
 def key_toggle_hold_left():
-    print("\ntoggle hold left", end='')
-
     if kl.mouse_left_holding:
-        pag.mouseUp(button='left')
-        print(" (up)")
+        mouseUp(button='left')
+        print("\ntoggle hold left (up)")
     else:
-        pag.mouseDown(button='left')
-        print(" (down)")
+        mouseDown(button='left')
+        print("\ntoggle hold left (down)")
 
     kl.set_mouse_left_holding(not kl.mouse_left_holding)
 
 
 def key_toggle_hold_right():
-    print("\ntoggle hold right", end='')
-
     if kl.mouse_right_holding:
-        pag.mouseUp(button='right')
-        print(" (up)")
+        mouseUp(button='right')
+        print("\ntoggle hold right (up)")
     else:
-        pag.mouseDown(button='right')
-        print(" (down)")
+        mouseDown(button='right')
+        print("\ntoggle hold right (down)")
 
     kl.set_mouse_right_holding(not kl.mouse_right_holding)
 
 
 def key_toggle_hold_middle():
-    print("\ntoggle hold middle", end='')
-
     if kl.mouse_middle_holding:
-        pag.mouseUp(button='middle')
-        print(" (up)")
+        mouseUp(button='middle')
+        print("\ntoggle hold middle (up)")
     else:
-        pag.mouseDown(button='middle')
-        print(" (down)")
+        mouseDown(button='middle')
+        print("\ntoggle hold middle (down)")
 
     kl.set_mouse_middle_holding(not kl.mouse_middle_holding)
 
 
 def key_scroll_up():
     print("\nscroll up")
-    pag.scroll(kl.ch.scroll_multiplier)
+    scroll(kl.config_json["scroll_multiplier"])
 
 
 def key_scroll_down():
     print("\nscroll down")
-    pag.scroll(-kl.ch.scroll_multiplier)
+    scroll(-kl.config_json["scroll_multiplier"])

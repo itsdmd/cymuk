@@ -1,9 +1,9 @@
-import modules.keyboard_listener as kl
+from modules.keyboard_listener import listener
 
 
 def main():
-    kl.listener.start()
-    kl.listener.join()
+    listener.start()
+    listener.join()
 
 
 if __name__ == "__main__":
