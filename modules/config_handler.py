@@ -1,8 +1,8 @@
 # Read Config File
 
-import json
-import pynput.keyboard as kb
-import pyautogui as pag
+from json import dump as json_dump, load as json_load
+from pynput.keyboard import Key, KeyCode
+from pyautogui import size as pag_size
 
 alphanumerics = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l',
                  'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x',
@@ -20,73 +20,59 @@ config_dir = 'config.json'
 # ---------------------------------------------------------------------------- #
 
 # ---------------------------------- Screen ---------------------------------- #
-screen_size = pag.size()
+screen_size = pag_size()
 # Format: (x, y)
-# Description: The total dimension of all screens, depends on how you set up
-# 	your screens in the settings.
 
 screen_list = [((0, 0), screen_size)]
 # Format: [((top_left_x, top_left_y), (bottom_right_x, bottom_right_y)), ...]
-# Description: An ordered list of all screens' top left and bottom right
-# 	coordination relative to the bounding box of all the screens.
 
 screen_default = 0
-# Description: The index of the screen that will be used as the default screen.
 
 # -------------------------------- Key mapping ------------------------------- #
-key_quit = 'ctrl+q'
-# Description: Quit the program.
+key_quit = 'esc'
 
-key_centralize = 'ctrl+r'
-# Description: Move the cursor to the center of the screen.
+key_centralize = 'c'
+
+key_centralize_root = 'ctrl+c'
 
 key_next_screen = 'ctrl+right'
-# Description: Move the cursor to the center of the next
-# 	screen in the screen list.
 
-key_previous_screen = 'ctrl+left'
+key_previous_screen = 'ctrl+h'
 
-key_left = 'left'
-# Description: Move the cursor left in continuous mode.
+key_left = 'h'
 
-key_right = 'right'
+key_right = 'l'
 
-key_up = 'up'
+key_up = 'k'
 
-key_down = 'down'
+key_down = 'j'
 
-key_jump_left = 'shift+left'
-# Description: Move the cursor left in jump mode. See
-# 	modules/mouse_jump.py for more info.
+key_jump_left = 'shift+h'
 
-key_jump_right = 'shift+right'
+key_jump_right = 'shift+l'
 
-key_jump_up = 'shift+up'
+key_jump_up = 'shift+k'
 
-key_jump_down = 'shift+down'
+key_jump_down = 'shift+j'
 
 key_click_left = 'space'
-# Description: Emulate left mouse button click.
 
 key_click_right = 'alt+space'
 
 key_click_middle = 'ctrl+space'
 
-key_toggle_hold_left = 'shift+space'
-# Description: Emulate left mouse button hold/release.
+key_toggle_hold_left = 'shift+none'
 
-key_toggle_hold_right = 'alt+shift+space'
+key_toggle_hold_right = 'alt+shift+none'
 
-key_toggle_hold_middle = 'ctrl+shift+space'
+key_toggle_hold_middle = 'ctrl+shift+none'
 
-key_scroll_up = 'page_up'
-# Description: Emulate scrolling up.
+key_scroll_up = 'i'
 
-key_scroll_down = 'page_down'
+key_scroll_down = 'm'
 
 # -------------------------------- Adjustments ------------------------------- #
 scroll_multiplier = 5
-# Description: The multiplier that will be used when scrolling up or down.
 
 # ---------------------------------------------------------------------------- #
 
@@ -94,7 +80,7 @@ scroll_multiplier = 5
 def read_config_file():
     try:
         f = open(config_dir, 'r')
-        config_json = json.load(f)
+        config_json = json_load(f)
         # print("\nConfig file loaded.")
         f.close()
 
@@ -103,6 +89,7 @@ def read_config_file():
         global screen_default
         global key_quit
         global key_centralize
+        global key_centralize_root
         global key_next_screen
         global key_previous_screen
         global key_left
@@ -129,6 +116,7 @@ def read_config_file():
             screen_default = config_json['screen_default']
             key_quit = config_json['key_quit']
             key_centralize = config_json['key_centralize']
+            key_centralize_root = config_json['key_centralize_root']
             key_next_screen = config_json['key_next_screen']
             key_previous_screen = config_json['key_previous_screen']
             key_left = config_json['key_left']
@@ -175,12 +163,13 @@ def read_config_file():
 def write_config_file():
     f = open(config_dir, 'w')
 
-    json.dump({
+    json_dump({
         "screen_size": screen_size,
         "screen_list": screen_list,
         "screen_default": screen_default,
         "key_quit": key_quit,
         "key_centralize": key_centralize,
+        "key_centralize_root": key_centralize_root,
         "key_next_screen": key_next_screen,
         "key_previous_screen": key_previous_screen,
         "key_left": key_left,
@@ -209,6 +198,6 @@ def write_config_file():
 
 def str_to_key(input: str):
     if input in alphanumerics:
-        return kb.KeyCode.from_char(input)
+        return KeyCode.from_char(input)
     else:
-        return kb.Key[input]
+        return Key[input]
