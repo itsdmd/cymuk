@@ -1,7 +1,7 @@
 # cymuk
 
 **cymuk** (pronounced
-[/ˈsaɪmʌk/](http://ipa-reader.xyz/?text=%CB%88sa%C9%AAm%CA%8Ck&voice=Joey)) is a _lightweight_, _portable_ and _cross-platform_ Python script that allows you to control your mouse cursor with your keyboard.
+[/ˈsaɪmʌk/](http://ipa-reader.xyz/?text=%CB%88sa%C9%AAm%CA%8Ck&voice=Joey)) is a _lightweight_, _portable_ and _cross-platform_ Python program that allows you to control the mouse cursor with keyboard.
 
 It can be used to perform actions/movements when a pre-defined key sequence is pressed (Capture mode), or as a mouse automation tool using CLI commands and preset plain text files (CLI mode - _WIP_).
 
@@ -36,7 +36,7 @@ This project is written in Python 3 with the helps of [PyAutoGUI](https://pyauto
 
 ### Manual
 
-See [MANUAL](docs/manual.md).
+See [MANUAL](docs/MANUAL.md).
 
 
 ## FAQ
