@@ -17,7 +17,8 @@ mouse_right_holding = False
 screens = []
 sticky_keys = [kb.Key.ctrl, kb.Key.alt, kb.Key.shift]
 
-print("new keyboard_listener.py")
+print("new keyboard_listener")
+pf.key_centralize()
 
 
 def set_current_box(topLeft, bottomRight):
