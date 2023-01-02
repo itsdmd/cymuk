@@ -25,7 +25,9 @@ The boundary is only used for and changed by jump actions. The cursor will not b
 
 The configuration file is a JSON file. You can see the template configuration file [here](template-config.json).
 
-I highly recommend you to do an initial run of the program to generate a config file with default values for you. You can modify it afterwards.
+The initial run of the program will prompt you to generate a config file with default values. You can modify it afterwards.
+
+> The initial run will cause the program to crash. This is to be expected. You just need to run it again.
 
 ### Notes
 
