@@ -29,12 +29,14 @@ I highly recommend you to do an initial run of the program to generate a config 
 
 ### Notes
 
-- All alphabetic characters are case-insensitive but should be in lowercase.
+- To improve stability/predictivity of key sequence capturing, **continuous movement isn't possible**, which means holding down a key will only trigger the action once.
+- All alphabetic characters are **case-insensitive** but should be in lowercase.
 - When using **Shift** in key sequence:
 	- For `Shift+1`, the keymap will be **`shift+!`**. Same for other numeric and special characters.
 	- For `Shift+Space`, the keymap will be **`shift+none`** (yes, it's weird it works).
 		- When there's no `Shift` key in the sequence, **`space`** MUST be used instead.
-- All configs MUST be present in the config file. If any config is missing, the program will ask to create a new config file with the default values.
+- The config file's directory is fixed to be the same directory as the executable. If you want to place it in another directory, you can create a symbolic link.
+- **All configs MUST be present** in the config file. If any config is missing, the program will ask to create a new config file with the default values.
 
 ### Description
 
