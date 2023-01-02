@@ -116,36 +116,30 @@ def key_previous_screen():
 
 def key_jump_left():
     print("\njump left")
-    mj.jumpLeft(kl.current_box[0], kl.current_box[1])
-    kl.set_current_box(
-        kl.current_box[0],
-        (kl.current_box[1][0] // 2, kl.current_box[1][1]))
+    new_box = mj.cut_box_left(kl.current_box[0], kl.current_box[1])
+    kl.set_current_box(new_box[0], new_box[1])
+    mj.jumpToCenter(kl.current_box[0], kl.current_box[1])
 
 
 def key_jump_right():
     print("\njump right")
-    mj.jumpRight(kl.current_box[0], kl.current_box[1])
-    kl.set_current_box(
-        (kl.current_box[1][0] // 2, kl.current_box[0][1]),
-        kl.current_box[1])
+    new_box = mj.cut_box_right(kl.current_box[0], kl.current_box[1])
+    kl.set_current_box(new_box[0], new_box[1])
+    mj.jumpToCenter(kl.current_box[0], kl.current_box[1])
 
 
 def key_jump_up():
     print("\njump up")
-    mj.jumpUp(kl.current_box[0], kl.current_box[1])
-    kl.set_current_box(
-        kl.current_box[0],
-        (kl.current_box[1][0],
-         (kl.current_box[0][1] + kl.current_box[1][1]) // 2))
+    new_box = mj.cut_box_up(kl.current_box[0], kl.current_box[1])
+    kl.set_current_box(new_box[0], new_box[1])
+    mj.jumpToCenter(kl.current_box[0], kl.current_box[1])
 
 
 def key_jump_down():
     print("\njump down")
-    mj.jumpDown(kl.current_box[0], kl.current_box[1])
-    kl.set_current_box(
-        (kl.current_box[0][0],
-         (kl.current_box[0][1] + kl.current_box[1][1]) // 2),
-        kl.current_box[1])
+    new_box = mj.cut_box_down(kl.current_box[0], kl.current_box[1])
+    kl.set_current_box(new_box[0], new_box[1])
+    mj.jumpToCenter(kl.current_box[0], kl.current_box[1])
 
 
 def key_click_left():
