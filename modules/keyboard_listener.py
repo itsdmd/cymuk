@@ -14,36 +14,36 @@ current_key_combination = []
 mouse_left_holding = False
 mouse_middle_holding = False
 mouse_right_holding = False
-screens = []
 sticky_keys = [Key.ctrl, Key.alt, Key.shift]
 
 print("new keyboard_listener")
 key_centralize()
 
 
-def set_current_boundary(topLeft, bottomRight):
+def set_current_boundary(topLeft: tuple[int, int],
+                         bottomRight: tuple[int, int]):
     global current_boundary
     current_boundary = ((topLeft[0], topLeft[1]),
                         (bottomRight[0], bottomRight[1]))
     print("New boundary: ", current_boundary)
 
 
-def set_current_screen_index(index):
+def set_current_screen_index(index: int):
     global current_screen_index
     current_screen_index = index
 
 
-def set_mouse_left_holding(value):
+def set_mouse_left_holding(value: bool):
     global mouse_left_holding
     mouse_left_holding = value
 
 
-def set_mouse_middle_holding(value):
+def set_mouse_middle_holding(value: bool):
     global mouse_middle_holding
     mouse_middle_holding = value
 
 
-def set_mouse_right_holding(value):
+def set_mouse_right_holding(value: bool):
     global mouse_right_holding
     mouse_right_holding = value
 
@@ -92,7 +92,6 @@ def on_release(key):
 
 # Collect single key events until released, suppress events from other
 # 	processes
-listener = KeyboardListener(
-    on_press=on_press,
-    on_release=on_release,
-    suppress=True)
+listener = KeyboardListener(on_press=on_press,
+                            on_release=on_release,
+                            suppress=True)
