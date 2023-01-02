@@ -72,6 +72,8 @@ key_scroll_up = 'i'
 key_scroll_down = 'm'
 
 # -------------------------------- Adjustments ------------------------------- #
+step_multiplier = 10
+
 scroll_multiplier = 5
 
 # ---------------------------------------------------------------------------- #
@@ -108,6 +110,7 @@ def read_config_file():
         global key_toggle_hold_middle
         global key_scroll_up
         global key_scroll_down
+        global step_multiplier
         global scroll_multiplier
 
         try:
@@ -135,6 +138,7 @@ def read_config_file():
             key_toggle_hold_middle = config_json['key_toggle_hold_middle']
             key_scroll_up = config_json['key_scroll_up']
             key_scroll_down = config_json['key_scroll_down']
+            step_multiplier = config_json['step_multiplier']
             scroll_multiplier = config_json['scroll_multiplier']
 
         except KeyError:
@@ -188,6 +192,7 @@ def write_config_file():
         "key_toggle_hold_middle": key_toggle_hold_middle,
         "key_scroll_up": key_scroll_up,
         "key_scroll_down": key_scroll_down,
+        "step_multiplier": step_multiplier,
         "scroll_multiplier": scroll_multiplier,
     }, f, indent=4)
 

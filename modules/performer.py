@@ -74,22 +74,22 @@ def key_quit():
 
 def key_left():
     print("\nleft")
-    moveRel(-10, 0)
+    moveRel(-kl.config_json["step_multiplier"], 0)
 
 
 def key_right():
     print("\nright")
-    moveRel(10, 0)
+    moveRel(kl.config_json["step_multiplier"], 0)
 
 
 def key_up():
     print("\nup")
-    moveRel(0, -10)
+    moveRel(0, -kl.config_json["step_multiplier"])
 
 
 def key_down():
     print("\ndown")
-    moveRel(0, 10)
+    moveRel(0, kl.config_json["step_multiplier"])
 
 
 def key_centralize():
