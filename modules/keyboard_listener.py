@@ -1,7 +1,7 @@
 # Listen To Keyboard Events and Execute Key Combinations Using performer.py
 
-from modules.config_handler import read_config_file
-from modules.performer import key_centralize, execute_key_combination
+from modules.config_handler import read_config_file, set_verbose as ch_sv
+from modules.performer import centralize, execute_key_combination
 from pynput.keyboard import Key, Listener as KeyboardListener
 
 config_json = read_config_file()
@@ -16,8 +16,15 @@ mouse_middle_holding = False
 mouse_right_holding = False
 sticky_keys = [Key.ctrl, Key.alt, Key.shift]
 
-print("new keyboard_listener")
-key_centralize()
+verbose = False
+
+centralize()
+
+
+def set_verbose():
+    global verbose
+    verbose = True
+    ch_sv()
 
 
 def set_current_boundary(topLeft: tuple[int, int],
@@ -25,7 +32,8 @@ def set_current_boundary(topLeft: tuple[int, int],
     global current_boundary
     current_boundary = ((topLeft[0], topLeft[1]),
                         (bottomRight[0], bottomRight[1]))
-    print("New boundary: ", current_boundary)
+    if verbose:
+        print("New boundary: ", current_boundary)
 
 
 def set_current_screen_index(index: int):

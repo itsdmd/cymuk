@@ -71,6 +71,10 @@ key_scroll_up = 'i'
 
 key_scroll_down = 'm'
 
+key_scroll_left = 'u'
+
+key_scroll_right = 'o'
+
 # -------------------------------- Adjustments ------------------------------- #
 step_multiplier = 10
 
@@ -78,12 +82,20 @@ scroll_multiplier = 5
 
 # ---------------------------------------------------------------------------- #
 
+verbose = False
+
+
+def set_verbose():
+    global verbose
+    verbose = True
+
 
 def read_config_file():
     try:
         f = open(config_dir, 'r')
         config_json = json_load(f)
-        # print("\nConfig file loaded.")
+        if verbose:
+            print("\nConfig file loaded.")
         f.close()
 
         global screen_size
@@ -146,6 +158,10 @@ def read_config_file():
             choice = input('y/n: ')
             if choice == 'y':
                 write_config_file()
+
+                f = open(config_dir, 'r')
+                config_json = json_load(f)
+                f.close()
             else:
                 print("\nExiting...")
                 exit()
@@ -157,6 +173,10 @@ def read_config_file():
         choice = input('y/n: ')
         if choice == 'y':
             write_config_file()
+
+            f = open(config_dir, 'r')
+            config_json = json_load(f)
+            f.close()
         else:
             print("\nExiting...")
             exit()

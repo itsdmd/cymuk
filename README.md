@@ -3,7 +3,7 @@
 **cymuk** (pronounced
 [/ˈsaɪmʌk/](http://ipa-reader.xyz/?text=%CB%88sa%C9%AAm%CA%8Ck&voice=Joey)) is a _lightweight_, _portable_ and _cross-platform_ Python program that allows you to control the mouse cursor with keyboard.
 
-It can be used to perform actions/movements when a pre-defined key sequence is pressed (Capture mode), or as a mouse automation tool using CLI commands and preset plain text files (CLI mode - _WIP_).
+It can be used to perform actions/movements when a pre-defined key sequence is pressed (**Capture** mode), or as a mouse automation tool using [plain text files](docs/sample-script.txt) (**Script** mode).
 
 This project is written in Python 3 with the helps of [PyAutoGUI](https://pyautogui.readthedocs.io/en/latest/) to control the mouse and [pynput](https://pynput.readthedocs.io/en/latest/) to listen for keyboard events.
 
@@ -15,7 +15,7 @@ This project is written in Python 3 with the helps of [PyAutoGUI](https://pyauto
 - Support **multiple monitors** setup and treat each one individually.
 - Two movement modes:
 	- _**Step**_: move the cursor by a small amount (default: 10px).
-	- _**Jump**_: move the cursor to the center of a portion of the screen (see [Boundary](docs/manual.md#boundary)).
+	- _**Jump**_: move the cursor to the center of a portion of the screen (see [Boundary](docs/MANUAL.md#boundary)).
 
 ## Usage
 
@@ -24,7 +24,7 @@ This project is written in Python 3 with the helps of [PyAutoGUI](https://pyauto
 #### Dependencies
 
 - Python 3
-- See [requirements.txt](requirements.txt) for list of dependencies.
+	- See [requirements.txt](requirements.txt) for list of dependencies.
 
 #### System
 
@@ -45,7 +45,7 @@ See [MANUAL](docs/MANUAL.md).
 
 Who doesn't want to improve their productivity by 1%? I know I do.
 
-Jokes aside, this project is heavily inspired by [keynav](https://github.com/jordansissel/keynav), a wonderful tool for X11 systems that I have been using for a few years now (I'm a huge fan of **keyboard-driven workflows**). The _'Jump'_ mode is basically a clone of keynav's movement style.
+Jokes aside, this project is heavily inspired by [keynav](https://github.com/jordansissel/keynav), a wonderful tool for X11 systems that I have been using for a few years now (I'm a huge fan of **keyboard-driven workflows**). The [_'Jump'_ mode](docs/MANUAL.md#boundary) is basically a clone of keynav's movement style.
 
 However, it's built for X window systems only. Other more cross-platform solutions that I found have problems or lack functionalities that I need; but most importantly, most of them are not open-sourced.
 
@@ -53,7 +53,7 @@ So, I decided to write my own.
 
 ### Why did you use PyAutoGUI when pynput can also control the mouse cursor?
 
-There are too many platform-related issues and limitations that come with pynput (you can read more about those [here](https://pyautogui.readthedocs.io/en/latest/limitations.html)). I want to minimize them and only use it for keyboard listening.
+There are too many platform-related issues and limitations that come with pynput (you can read more about those [here](https://pyautogui.readthedocs.io/en/latest/limitations.html). I want to minimize them and only use it for keyboard listening.
 
 ### Contributing
 

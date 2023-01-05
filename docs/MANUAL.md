@@ -7,6 +7,10 @@
 - [Configuration](#configuration)
 	- [Notes](#notes)
 	- [Description](#description)
+- [Automation using Script](#automation-using-script)
+	- [Notes](#notes-1)
+	- [List of Action Codes](#list-of-action-codes)
+	- [Testing](#testing)
 
 
 ## Boundary
@@ -42,31 +46,93 @@ The initial run of the program will prompt you to generate a config file with de
 
 ### Description
 
-**`screen_size`**: The total dimension of all screens, depends on how you set up
- 	your screens in the settings.
-
-**`screen_list`**: An ordered list of all screens' top-left and bottom-right coordination tuple relative to the combined boundary of all the screens.
-
-**`screen_default`**: The index of the screen that will be used as the root screen.
-
-**`key_quit`**: Quit the program.
-
 **`key_centralize`**: Move the cursor to the center of the current boundary.
 
 **`key_centralize_root`**: Move the cursor to the center of the current screen and set boundary to be the current screen.
 
-**`key_next_screen`**: Move the cursor to the center of the next screen in the screen list.
-
-**`key_left`**: Move the cursor left in step mode.
+**`key_click_left`**: Emulate left mouse button click.
 
 **`key_jump_left`**: Move the cursor left in jump mode.
 
-**`key_click_left`**: Emulate left mouse button click.
+**`key_left`**: Move the cursor left in step mode.
 
-**`key_toggle_hold_left`**: Emulate left mouse button hold/release.
+**`key_quit`**: Quit the program.
+
+**`key_screen_next`**: Move the cursor to the center of the next screen in the screen list.
+
+**`key_screen_prev`**: Move the cursor to the center of the previous screen in the screen list.
 
 **`key_scroll_up`**: Emulate scrolling up.
 
-**`step_multiplier`**: Multiplier for step movements.
+> :warning: Horizontal scrolling is only supported on Linux and macOS. Might work on other *nix systems but not tested.
+
+**`key_toggle_hold_left`**: Emulate left mouse button hold/release.
+
+**`screen_default`**: The index of the screen that will be used as the root screen.
+
+**`screen_list`**: An ordered list of all screens' top-left and bottom-right coordination tuple relative to the combined boundary of all the screens.
+
+**`screen_size`**: The total dimension of all screens, depends on how you set up your screens in the settings.
 
 **`scroll_multiplier`**: Multiplier for scrolling actions.
+
+**`step_multiplier`**: Multiplier for step movements.
+
+## Automation using Script
+
+Besides **Capture** mode which is used to capture key sequences, there's also **Script** mode which is used to automate the actions using a plain text file.
+
+The structure of the script file is as follows:
+
+```plain
+<action_code> <argument_0> <argument_1> ...
+```
+
+### Notes
+
+- All arguments MUST present and in order as shown in the list above.
+- All time-related arguments are in milliseconds.
+- The script must always end with `quit` action.
+
+### List of Action Codes
+
+```plain
+centralize
+centralize_root
+click_left -1 -1 1 0	// x, y, clicks, delay
+click_right -1 -1 1 0	// x, y, clicks, delay
+down 1					// steps
+drag_abs left 0 0 0		// button, x, y, duration | Possible button names: left, right, middle
+drag_rel left 0 0 0		// button, x, y, duration
+jump_down
+jump_left
+jump_right
+jump_up
+left 1					// steps
+move_abs 0 0 0			// x, y | Move relative to absolute coordinate
+move_rel 0 0 0			// x, y | Move relative to current position
+quit 0					// code | 0 for normal exit, other values for error
+right 1					// steps
+screen_index 0			// index | Negative value to count from the end with -1 being the last screen
+screen_next 1			// steps
+screen_prev 1			// steps
+scroll_down 1 10		// multiplier, delay
+scroll_left 1 10		// multiplier, delay
+scroll_right 1 10		// multiplier, delay
+scroll_up 1 10			// multiplier, delay
+toggle_hold_left
+toggle_hold_middle
+toggle_hold_right
+up 1					// steps
+wait 0					// duration
+```
+
+### Testing
+
+You can see the sample script file [here](sample-script.txt). Test it out by running
+
+```bash
+python cymuk.py -s ./docs/sample-script.txt
+```
+
+A handy website for you to test out the script: [Link](https://www.onlinemictest.com/mouse-test/).

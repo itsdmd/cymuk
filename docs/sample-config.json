@@ -45,8 +45,10 @@
 	"key_toggle_hold_left": "shift+none",
 	"key_toggle_hold_right": "alt+shift+none",
 	"key_toggle_hold_middle": "ctrl+shift+none",
-	"key_scroll_up": "page_up",
-	"key_scroll_down": "page_down",
+	"key_scroll_up": "i",
+	"key_scroll_down": "m",
+	"key_scroll_left": "u",
+	"key_scroll_right": "o",
 	"step_multiplier": 10,
 	"scroll_multiplier": 5
 }
