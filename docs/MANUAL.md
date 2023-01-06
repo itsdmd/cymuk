@@ -8,14 +8,19 @@
 - [Configuration](#configuration)
 	- [Notes](#notes)
 	- [Description](#description)
-- [Automation using Script](#automation-using-script)
-	- [Notes](#notes-1)
-	- [List of Action Codes](#list-of-action-codes)
-	- [Testing](#testing)
+- [Modes](#modes)
+	- [Capture mode](#capture-mode)
+	- [Script mode](#script-mode)
+		- [Notes](#notes-1)
+		- [List of Action Codes](#list-of-action-codes)
+		- [Testing](#testing)
+	- [Monitor mode](#monitor-mode)
 
 ## Intallation
 
-> Make sure you have `setuptools>=60` installed. Install it with `pip install setuptools`.
+> I'm currently working on building binaries for Windows and Linux. Stay tuned.
+
+Make sure you have `setuptools>=60` installed. Install it with `pip install setuptools`.
 
 Run the following command to install the dependencies:
 
@@ -88,9 +93,23 @@ The initial run of the program will prompt you to generate a config file with de
 
 **`step_multiplier`**: Multiplier for step movements.
 
-## Automation using Script
+## Modes
 
-Besides **Capture** mode which is used to capture key sequences, there's also **Script** mode which is used to automate the actions using a plain text file.
+You can pass in several flags to the program. Use `--help` for more details.
+
+If no flag is passed in, the program will run in **Capture** mode.
+
+The program will only run in one mode during its lifetime. If you pass in multiple mode flags, the program will prioritize with the following order: `--capture` > `--script` > `--monitor`.
+
+### Capture mode
+
+**Capture** mode is used to capture key sequences and perform actions based on the configuration file. Activate it by passing in the `-c` (or `--capture`) flag.
+
+In Capture mode, all keyboard input will be captured by the program and will not be passed to other applications, even the terminal. That's why you can only exit the program by pressing the key that is mapped to `key_quit` in the config file (default is `Esc` key).
+
+### Script mode
+
+**Script** mode is used to automate the actions using a plain text file. Activate it by passing in the `-s` (or `--script`) flag followed by the directory of the script files separated by whitespace.
 
 The structure of the script file is as follows:
 
@@ -98,13 +117,13 @@ The structure of the script file is as follows:
 <action_code> <argument_0> <argument_1> ...
 ```
 
-### Notes
+#### Notes
 
 - All arguments MUST present and in order as shown in the list above.
 - All time-related arguments are in milliseconds.
-- The script must always end with `quit` action.
+- `quit` action will cause the program to exit immediately, thus won't be able to execute the scripts after it.
 
-### List of Action Codes
+#### List of Action Codes
 
 ```plain
 centralize
@@ -137,7 +156,7 @@ up 1                    // steps
 wait 0                  // duration
 ```
 
-### Testing
+#### Testing
 
 You can see the sample script file [here](sample-script.txt). Test it out by running
 
@@ -146,3 +165,9 @@ python cymuk.py -s ./docs/sample-script.txt
 ```
 
 A handy website for you to test out the script: [Link](https://www.onlinemictest.com/mouse-test/).
+
+### Monitor mode
+
+**Monitor** mode is used to monitor the mouse cursor's position and print it out to the terminal. Activate it by passing in the `-m` (or `--monitor`) flag.
+
+This mode serves purely as a convinient way to get the cursor's position on supported platforms. You can use system-specific tools to get more detailed information.
