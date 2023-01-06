@@ -162,8 +162,5 @@ cython_debug/
 # Config file
 config.json
 
-# Release folder generating code
-generate_release.sh
-
 # Release folder
 release/
