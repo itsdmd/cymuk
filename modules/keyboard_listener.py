@@ -1,7 +1,7 @@
 # Listen To Keyboard Events And Execute Key Combinations Using performer.py
 
 from modules.config_handler import read_config_file
-from modules.global_properties import verbose
+from modules.global_properties import get_verbose
 from modules.performer import execute_key_combination
 from pynput.keyboard import Key, Listener as KeyboardListener
 
@@ -23,7 +23,7 @@ def set_current_boundary(topLeft: tuple[int, int],
     global current_boundary
     current_boundary = ((topLeft[0], topLeft[1]),
                         (bottomRight[0], bottomRight[1]))
-    if verbose:
+    if get_verbose():
         print("New boundary: ", current_boundary)
 
 

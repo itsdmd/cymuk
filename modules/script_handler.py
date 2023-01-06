@@ -13,9 +13,6 @@ def set_verbose():
 def parse_script(script_dir):
     with open(script_dir, "r") as script_file:
         script = script_file.read()
-    if script.splitlines()[-1] != "quit":
-        print("Please add 'quit' at the end of the script.")
-        exit(1)
     line_num = 0
     for line in script.splitlines():
         args = line.split()

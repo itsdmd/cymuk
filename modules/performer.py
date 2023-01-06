@@ -1,9 +1,10 @@
 # Perform Action Upon Pressing Key Sequence Defined In the Config File
 
+from modules.global_properties import get_verbose
+from pyautogui import click, dragTo, dragRel, moveTo, moveRel, mouseDown, mouseUp, vscroll, hscroll
 from time import sleep
 import modules.keyboard_listener as kl
 import modules.mouse_jump as mj
-from pyautogui import click, dragTo, dragRel, moveTo, moveRel, mouseDown, mouseUp, vscroll, hscroll
 
 
 def fn_parser(name, args=[]):
@@ -135,12 +136,12 @@ def fn_parser(name, args=[]):
             print("ERROR: {} missing arguments".format(name))
             quit(1)
     else:
-        if kl.verbose:
+        if get_verbose():
             print("Unassigned/Undefined")
 
 
 def execute_key_combination():
-    if kl.verbose:
+    if get_verbose():
         print(kl.current_key_combination)
 
     current_key_combination_str = ""
@@ -156,7 +157,7 @@ def execute_key_combination():
 
 
 def quit(code: int = 0):
-    if kl.verbose:
+    if get_verbose():
         print("Quit\n")
     try:
         kl.listener.stop()
@@ -166,7 +167,7 @@ def quit(code: int = 0):
 
 
 def left(steps: int = 1):
-    if kl.verbose:
+    if get_verbose():
         print("Left\n")
     if steps <= 0:
         print("ERROR: Steps must be greater than 0")
@@ -176,7 +177,7 @@ def left(steps: int = 1):
 
 
 def right(steps: int = 1):
-    if kl.verbose:
+    if get_verbose():
         print("Right\n")
     if steps <= 0:
         print("ERROR: Steps must be greater than 0")
@@ -186,7 +187,7 @@ def right(steps: int = 1):
 
 
 def up(steps: int = 1):
-    if kl.verbose:
+    if get_verbose():
         print("Up\n")
     if steps <= 0:
         print("ERROR: Steps must be greater than 0")
@@ -196,7 +197,7 @@ def up(steps: int = 1):
 
 
 def down(steps: int = 1):
-    if kl.verbose:
+    if get_verbose():
         print("Down\n")
     if steps <= 0:
         print("ERROR: Steps must be greater than 0")
@@ -206,13 +207,13 @@ def down(steps: int = 1):
 
 
 def centralize():
-    if kl.verbose:
+    if get_verbose():
         print("Centralize\n")
     mj.jumpToCenter(kl.current_boundary[0], kl.current_boundary[1])
 
 
 def centralize_root():
-    if kl.verbose:
+    if get_verbose():
         print("Centralize root\n")
     kl.set_current_boundary(kl.screens[kl.current_screen_index][0],
                             kl.screens[kl.current_screen_index][1])
@@ -220,7 +221,7 @@ def centralize_root():
 
 
 def screen_index(index: int = 0):
-    if kl.verbose:
+    if get_verbose():
         print("Select screen index {}\n".format(index))
     if abs(index) >= len(kl.screens):
         print("ERROR: Screen index out of range!")
@@ -232,7 +233,7 @@ def screen_index(index: int = 0):
 
 
 def screen_next(steps: int = 1):
-    if kl.verbose:
+    if get_verbose():
         print("Next screen\n")
     new_index = kl.current_screen_index + steps
     if new_index >= len(kl.screens):
@@ -242,7 +243,7 @@ def screen_next(steps: int = 1):
 
 
 def screen_prev(steps: int = 1):
-    if kl.verbose:
+    if get_verbose():
         print("Previous screen\n")
     new_index = kl.current_screen_index - steps
     if new_index < 0:
@@ -252,7 +253,7 @@ def screen_prev(steps: int = 1):
 
 
 def jump_left():
-    if kl.verbose:
+    if get_verbose():
         print("Jump left\n")
     new_boundary = mj.cut_boundary_left(kl.current_boundary[0],
                                         kl.current_boundary[1])
@@ -261,7 +262,7 @@ def jump_left():
 
 
 def jump_right():
-    if kl.verbose:
+    if get_verbose():
         print("Jump right\n")
     new_boundary = mj.cut_boundary_right(kl.current_boundary[0],
                                          kl.current_boundary[1])
@@ -270,7 +271,7 @@ def jump_right():
 
 
 def jump_up():
-    if kl.verbose:
+    if get_verbose():
         print("Jump up\n")
     new_boundary = mj.cut_boundary_up(kl.current_boundary[0],
                                       kl.current_boundary[1])
@@ -279,7 +280,7 @@ def jump_up():
 
 
 def jump_down():
-    if kl.verbose:
+    if get_verbose():
         print("Jump down\n")
     new_boundary = mj.cut_boundary_down(kl.current_boundary[0],
                                         kl.current_boundary[1])
@@ -288,7 +289,7 @@ def jump_down():
 
 
 def click_left(x: int = -1, y: int = -1, clicks: int = 1, delay_ms: int = 0):
-    if kl.verbose:
+    if get_verbose():
         print("Click left\n")
     if delay_ms < 0:
         print("ERROR: Delay must be greater than or equal to 0!")
@@ -301,7 +302,7 @@ def click_left(x: int = -1, y: int = -1, clicks: int = 1, delay_ms: int = 0):
 
 
 def click_right(x: int = -1, y: int = -1, clicks: int = 1, delay_ms: int = 0):
-    if kl.verbose:
+    if get_verbose():
         print("Click right\n")
     if delay_ms < 0:
         print("ERROR: Delay must be greater than or equal to 0!")
@@ -314,7 +315,7 @@ def click_right(x: int = -1, y: int = -1, clicks: int = 1, delay_ms: int = 0):
 
 
 def click_middle(x: int = -1, y: int = -1, clicks: int = 1, delay_ms: int = 0):
-    if kl.verbose:
+    if get_verbose():
         print("Click middle\n")
     if delay_ms < 0:
         print("ERROR: Delay must be greater than or equal to 0!")
@@ -329,11 +330,11 @@ def click_middle(x: int = -1, y: int = -1, clicks: int = 1, delay_ms: int = 0):
 def toggle_hold_left():
     if kl.mouse_left_holding:
         mouseUp(button='left')
-        if kl.verbose:
+        if get_verbose():
             print("Toggle hold left (up)\n")
     else:
         mouseDown(button='left')
-        if kl.verbose:
+        if get_verbose():
             print("Toggle hold left (down)\n")
 
     kl.set_mouse_left_holding(not kl.mouse_left_holding)
@@ -342,11 +343,11 @@ def toggle_hold_left():
 def toggle_hold_right():
     if kl.mouse_right_holding:
         mouseUp(button='right')
-        if kl.verbose:
+        if get_verbose():
             print("Toggle hold right (up)\n")
     else:
         mouseDown(button='right')
-        if kl.verbose:
+        if get_verbose():
             print("Toggle hold right (down)\n")
 
     kl.set_mouse_right_holding(not kl.mouse_right_holding)
@@ -355,18 +356,18 @@ def toggle_hold_right():
 def toggle_hold_middle():
     if kl.mouse_middle_holding:
         mouseUp(button='middle')
-        if kl.verbose:
+        if get_verbose():
             print("Toggle hold middle (up)\n")
     else:
         mouseDown(button='middle')
-        if kl.verbose:
+        if get_verbose():
             print("Toggle hold middle (down)\n")
 
     kl.set_mouse_middle_holding(not kl.mouse_middle_holding)
 
 
 def scroll_up(steps: int = 1, delay_ms: int = 10):
-    if kl.verbose:
+    if get_verbose():
         print("Scroll up {} times with {}ms interval\n".format(steps, delay_ms))
     if delay_ms <= 0:
         print("ERROR: Delay must be greater than 0!")
@@ -378,13 +379,13 @@ def scroll_up(steps: int = 1, delay_ms: int = 10):
 
 
 def scroll_down(steps: int = 1, delay_ms: int = 10):
-    if kl.verbose:
+    if get_verbose():
         print("Scroll up {} times\n".format(steps))
     if delay_ms <= 0:
         print("ERROR: Delay must be greater than 0!")
         quit(1)
     for i in range(steps):
-        if kl.verbose:
+        if get_verbose():
             print("Scroll #{}".format(i+1))
         vscroll(-kl.config_json["scroll_multiplier"])
         if i != steps-1:
@@ -392,7 +393,7 @@ def scroll_down(steps: int = 1, delay_ms: int = 10):
 
 
 def scroll_left(steps: int = 1, delay_ms: int = 10):
-    if kl.verbose:
+    if get_verbose():
         print("Scroll left {} times\n".format(steps))
     if delay_ms <= 0:
         print("ERROR: Delay must be greater than 0!")
@@ -404,7 +405,7 @@ def scroll_left(steps: int = 1, delay_ms: int = 10):
 
 
 def scroll_right(steps: int = 1, delay_ms: int = 10):
-    if kl.verbose:
+    if get_verbose():
         print("Scroll right {} times\n".format(steps))
     if delay_ms <= 0:
         print("ERROR: Delay must be greater than 0!")
@@ -416,7 +417,7 @@ def scroll_right(steps: int = 1, delay_ms: int = 10):
 
 
 def move_abs(x: int = 0, y: int = 0, duration_ms: int = 0):
-    if kl.verbose:
+    if get_verbose():
         print("Move to ({}, {}) over {}ms\n".format(x, y, duration_ms))
     if duration_ms < 0:
         print("ERROR: Duration must be greater than or equal to 0!")
@@ -425,7 +426,7 @@ def move_abs(x: int = 0, y: int = 0, duration_ms: int = 0):
 
 
 def move_rel(x: int = 0, y: int = 0, duration_ms: int = 0):
-    if kl.verbose:
+    if get_verbose():
         print("Move relative ({}, {}) over {}ms\n".format(x, y, duration_ms))
     if duration_ms < 0:
         print("ERROR: Duration must be greater than or equal to 0!")
@@ -434,7 +435,7 @@ def move_rel(x: int = 0, y: int = 0, duration_ms: int = 0):
 
 
 def drag_abs(button: str = "left", x: int = 0, y: int = 0, duration_ms: int = 0):
-    if kl.verbose:
+    if get_verbose():
         print("Drag with {} button to ({}, {}) over {}ms\n".format(
             button, x, y, duration_ms))
     if duration_ms < 0:
@@ -444,7 +445,7 @@ def drag_abs(button: str = "left", x: int = 0, y: int = 0, duration_ms: int = 0)
 
 
 def drag_rel(button: str = "left", x: int = 0, y: int = 0, duration_ms: int = 0):
-    if kl.verbose:
+    if get_verbose():
         print("Drag with {} button relative ({}, {}) over {}ms\n".format(
             button, x, y, duration_ms))
     if duration_ms < 0:
@@ -454,7 +455,7 @@ def drag_rel(button: str = "left", x: int = 0, y: int = 0, duration_ms: int = 0)
 
 
 def wait(duration_ms: int = 0):
-    if kl.verbose:
+    if get_verbose():
         print("Wait {}ms\n".format(duration_ms))
     if duration_ms < 0:
         print("ERROR: Duration must be greater than or equal to 0!")

@@ -7,6 +7,10 @@ pag.PAUSE = 0.1
 
 
 def main():
+    msg = str(pag.position())
+
     while True:
-        print(pag.position())
+        if msg != str(pag.position()):
+            msg = str(pag.position())
+            print(msg)
         sleep(pag.PAUSE)
