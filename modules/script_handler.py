@@ -24,6 +24,6 @@ def parse_script(script_dir):
         except:
             pass
         if verbose:
-            print("\nLine {}\nPerforming: ".format(line_num) + " ".join(args))
+            print("\nLine {}\nPerforming: {}".format(line_num, " ".join(args)))
         fn_parser(args[0], args[1:])
         line_num += 1

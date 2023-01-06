@@ -1,7 +1,8 @@
-# Listen To Keyboard Events and Execute Key Combinations Using performer.py
+# Listen To Keyboard Events And Execute Key Combinations Using performer.py
 
-from modules.config_handler import read_config_file, set_verbose as ch_sv
-from modules.performer import centralize, execute_key_combination
+from modules.config_handler import read_config_file
+from modules.global_properties import verbose
+from modules.performer import execute_key_combination
 from pynput.keyboard import Key, Listener as KeyboardListener
 
 config_json = read_config_file()
@@ -15,16 +16,6 @@ mouse_left_holding = False
 mouse_middle_holding = False
 mouse_right_holding = False
 sticky_keys = [Key.ctrl, Key.alt, Key.shift]
-
-verbose = False
-
-centralize()
-
-
-def set_verbose():
-    global verbose
-    verbose = True
-    ch_sv()
 
 
 def set_current_boundary(topLeft: tuple[int, int],
