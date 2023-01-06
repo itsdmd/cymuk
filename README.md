@@ -23,12 +23,10 @@ This project is written in Python 3 with the helps of [PyAutoGUI](https://pyauto
 
 #### Dependencies
 
-- Python 3
-	- See [requirements.txt](requirements.txt) for list of dependencies.
-
-#### System
-
-- Windows 7+ (might run on older systems, but not tested)
+- Python 3.6+
+	- Can technically run on Python 3.0, but for stability 3.6 and upward is strongly recommended.
+- Windows 7+
+	- Might run on older systems, but not tested.
 - macOS 10.12+ (see [prerequisites](https://pynput.readthedocs.io/en/latest/limitations.html#macos))
 	- _Note_: This is just theoretically possible. I don't have a macOS machine (and too busy/lazy to setup a VM) to test it.
 - Linux with _X_ server OR _uinput_ (see
