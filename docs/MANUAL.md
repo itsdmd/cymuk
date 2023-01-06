@@ -109,32 +109,32 @@ The structure of the script file is as follows:
 ```plain
 centralize
 centralize_root
-click_left -1 -1 1 0	// x, y, clicks, delay
-click_right -1 -1 1 0	// x, y, clicks, delay
-down 1					// steps
-drag_abs left 0 0 0		// button, x, y, duration | Possible button names: left, right, middle
-drag_rel left 0 0 0		// button, x, y, duration
+click_left -1 -1 1 0    // x, y, clicks, delay
+click_right -1 -1 1 0   // x, y, clicks, delay
+down 1                  // steps
+drag_abs left 0 0 0     // button, x, y, duration | Possible button names: left, right, middle
+drag_rel left 0 0 0     // button, x, y, duration
 jump_down
 jump_left
 jump_right
 jump_up
-left 1					// steps
-move_abs 0 0 0			// x, y | Move relative to absolute coordinate
-move_rel 0 0 0			// x, y | Move relative to current position
-quit 0					// code | 0 for normal exit, other values for error
-right 1					// steps
-screen_index 0			// index | Negative value to count from the end with -1 being the last screen
-screen_next 1			// steps
-screen_prev 1			// steps
-scroll_down 1 10		// multiplier, delay
-scroll_left 1 10		// multiplier, delay
-scroll_right 1 10		// multiplier, delay
-scroll_up 1 10			// multiplier, delay
+left 1                  // steps
+move_abs 0 0 0          // x, y | Move relative to absolute coordinate
+move_rel 0 0 0          // x, y | Move relative to current position
+quit 0                  // code | 0 for normal exit, other values for error
+right 1                 // steps
+screen_index 0          // index | Negative value to count from the end with -1 being the last screen
+screen_next 1           // steps
+screen_prev 1           // steps
+scroll_down 1 10        // multiplier, delay
+scroll_left 1 10        // multiplier, delay
+scroll_right 1 10       // multiplier, delay
+scroll_up 1 10          // multiplier, delay
 toggle_hold_left
 toggle_hold_middle
 toggle_hold_right
-up 1					// steps
-wait 0					// duration
+up 1                    // steps
+wait 0                  // duration
 ```
 
 ### Testing
