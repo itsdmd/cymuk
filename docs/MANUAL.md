@@ -3,6 +3,7 @@
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)
+- [Intallation](#intallation)
 - [Boundary](#boundary)
 - [Configuration](#configuration)
 	- [Notes](#notes)
@@ -12,6 +13,15 @@
 	- [List of Action Codes](#list-of-action-codes)
 	- [Testing](#testing)
 
+## Intallation
+
+> Make sure you have `setuptools>=60` installed. Install it with `pip install setuptools`.
+
+Run the following command to install the dependencies:
+
+```bash
+pip install -e .
+```
 
 ## Boundary
 
