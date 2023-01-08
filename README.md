@@ -30,7 +30,7 @@ This project is written in Python 3 with the helps of [PyAutoGUI](https://pyauto
 - Windows 7+
 	- Might run on older systems, but not tested.
 - macOS 10.12+ (see [prerequisites](https://pynput.readthedocs.io/en/latest/limitations.html#macos))
-	- _Note_: This is just theoretically possible. I don't have a macOS machine (and too busy/lazy to setup a VM) to test it.
+	- This is just theoretically possible. I don't have a macOS machine (and too busy/lazy to setup a VM) to test it.
 - Linux with _X_ server OR _uinput_ (see
   [prerequisites](https://pynput.readthedocs.io/en/latest/limitations.html#linux))
 
@@ -54,6 +54,10 @@ So, I decided to write my own.
 ### Why did you use PyAutoGUI when pynput can also control the mouse cursor?
 
 There are too many platform-related issues and limitations that come with pynput (you can read more about those [here](https://pyautogui.readthedocs.io/en/latest/limitations.html). I want to minimize them and only use it for keyboard listening.
+
+### Why can't it run in (true) daemon mode?
+
+One of the main purposes of this program is to support **multiple platforms**. It's hard (and tedious) for me to ensure the program can run stably universally since each platform has its own way to handle background processes and also depends on how one set their system up. Furthermore, running it as an unregistered publisher background service might raise red flags for the system's virus scanner.
 
 ### Contributing
 
