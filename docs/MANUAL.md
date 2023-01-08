@@ -28,6 +28,16 @@ Run the following command to install the dependencies:
 pip install -e .
 ```
 
+You can run the program straight from the terminal with:
+
+```bash
+python cymuk.py
+```
+
+or activate it using a program that can bind custom command to global shortcut keys, such as [AutoHotKey](https://www.autohotkey.com/).
+
+> :question: [Why can't it run in the background all the time?](../README.md#why-cant-it-run-in-true-daemon-mode)
+
 ## Boundary
 
 "Boundary" is a terminology apply for **jump movements**, indicates the area that have the mouse cursor at the center of it. The root boundary is the screen.
