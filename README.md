@@ -1,3 +1,7 @@
+#### :warning: This project is currently not maintained since I'm now using [xmouseless](https://github.com/jbensmann/xmouseless) and use Linux almost exclusively.
+
+---
+
 # cymuk
 
 **cymuk** (pronounced
